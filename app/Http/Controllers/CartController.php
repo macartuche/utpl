@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Cart_model;
-use App\ProductAtrr_model;
+use App\Models\Cart_model;
+use App\Models\ProductAtrr_model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -21,6 +21,7 @@ class CartController extends Controller
     }
 
     public function addToCart(Request $request){
+
         $inputToCart=$request->all();
         Session::forget('discount_amount_price');
         Session::forget('coupon_code');
@@ -40,9 +41,11 @@ class CartController extends Controller
                 $sizeAtrr=explode("-",$inputToCart['size']);
                 $inputToCart['size']=$sizeAtrr[1];
                 $inputToCart['product_code']=$stockAvailable->sku;
+
                 $count_duplicateItems=Cart_model::where(['products_id'=>$inputToCart['products_id'],
                     'product_color'=>$inputToCart['product_color'],
                     'size'=>$inputToCart['size']])->count();
+
                 if($count_duplicateItems>0){
                     return back()->with('message','This Item Added already');
                 }else{

@@ -10,11 +10,13 @@ use Illuminate\Support\Facades\Session;
 
 class CheckOutController extends Controller
 {
-    public function index(){
-        $countries=DB::table('countries')->get();
+    public function index(){ 
+        //$countries=DB::table('countries')->get();
         $user_login=User::where('id',Auth::id())->first();
-        return view('checkout.index',compact('countries','user_login'));
+        return view('checkout.index',compact('user_login'));
+        //return view('checkout.index',compact('countries','user_login'));
     }
+
     public function submitcheckout(Request $request){
        $this->validate($request,[
            'billing_name'=>'required',
@@ -37,7 +39,8 @@ class CheckOutController extends Controller
                'address'=>$input_data['shipping_address'],
                'city'=>$input_data['shipping_city'],
                'state'=>$input_data['shipping_state'],
-               'country'=>$input_data['shipping_country'],
+               //'country'=>$input_data['shipping_country'],
+               'country'=>'Ecuador',
                'pincode'=>$input_data['shipping_pincode'],
                'mobile'=>$input_data['shipping_mobile']]);
        }else{
@@ -47,7 +50,8 @@ class CheckOutController extends Controller
                 'address'=>$input_data['shipping_address'],
                 'city'=>$input_data['shipping_city'],
                 'state'=>$input_data['shipping_state'],
-                'country'=>$input_data['shipping_country'],
+                //'country'=>$input_data['shipping_country'],
+                'country'=>'Ecuador',
                 'pincode'=>$input_data['shipping_pincode'],
                 'mobile'=>$input_data['shipping_mobile'],]);
        }
@@ -55,7 +59,8 @@ class CheckOutController extends Controller
             'address'=>$input_data['billing_address'],
             'city'=>$input_data['billing_city'],
             'state'=>$input_data['billing_state'],
-            'country'=>$input_data['billing_country'],
+            //'country'=>$input_data['billing_country'],
+            'country'=>'Ecuador',
             'pincode'=>$input_data['billing_pincode'],
             'mobile'=>$input_data['billing_mobile']]);
        return redirect('/order-review');

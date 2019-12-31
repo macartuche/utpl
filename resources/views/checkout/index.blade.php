@@ -30,14 +30,7 @@
                         <div class="form-group {{$errors->has('billing_state')?'has-error':''}}">
                             <input type="text" class="form-control" name="billing_state" value="{{$user_login->state}}" id="billing_state" placeholder=" Billing State">
                             <span class="text-danger">{{$errors->first('billing_state')}}</span>
-                        </div>
-                        <div class="form-group">
-                            <select name="billing_country" id="billing_country" class="form-control">
-                                @foreach($countries as $country)
-                                    <option value="{{$country->country_name}}" {{$user_login->country==$country->country_name?' selected':''}}>{{$country->country_name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                        </div> 
                         <div class="form-group {{$errors->has('billing_pincode')?'has-error':''}}">
                             <input type="text" class="form-control" name="billing_pincode" value="{{$user_login->pincode}}" id="billing_pincode" placeholder=" Billing Pincode">
                             <span class="text-danger">{{$errors->first('billing_pincode')}}</span>
@@ -73,13 +66,6 @@
                         <div class="form-group {{$errors->has('shipping_state')?'has-error':''}}">
                             <input type="text" class="form-control" name="shipping_state" value="" id="shipping_state" placeholder="Shipping State">
                             <span class="text-danger">{{$errors->first('shipping_state')}}</span>
-                        </div>
-                        <div class="form-group">
-                            <select name="shipping_country" id="shipping_country" class="form-control">
-                                @foreach($countries as $country)
-                                    <option value="{{$country->country_name}}">{{$country->country_name}}</option>
-                                @endforeach
-                            </select>
                         </div>
                         <div class="form-group {{$errors->has('shipping_pincode')?'has-error':''}}">
                             <input type="text" class="form-control" name="shipping_pincode" value="" id="shipping_pincode" placeholder="Shipping Pincode">
