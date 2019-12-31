@@ -20,7 +20,5 @@ class AdminProductosController extends CBController {
 		$this->addFile("Image","image")->encrypt(true);
 		$this->addDatetime("Created At","created_at")->required(false)->showAdd(false)->showEdit(false);
 		$this->addDatetime("Updated At","updated_at")->required(false)->showAdd(false)->showEdit(false);
-		
-
     }
 }
